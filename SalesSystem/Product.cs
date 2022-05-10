@@ -4,29 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace SalesSystem
 {
+    [XmlRoot(ElementName="product")]
     public class Product
     {
-        private int itemNumber;
-        private string type;
-        private string name;
-        private string description;        
+        private int itemNumber;        
+        private string type;        
+        private string name;        
+        private string description;
         private double cost;
-        public int ItemNumber { get { return itemNumber; } set { itemNumber = value; } }
-        public string Type { get { return type; } set { type = value; } }
-        public string Name { get { return name; } set { name = value; } }
-        public string Description { get { return description; } set { description = value; } }
-        public double Cost { get { return cost; } set { cost = value; } }
 
-        /*public Product(int itemNumber, string type, string name, double cost) 
-        {
-            this.itemNumber = itemNumber;
-            this.type = type;
-            this.name = name;
-            this.cost = cost;
-        }*/
+        [XmlElement(ElementName = "itemNumber")]
+        public int ItemNumber { get { return itemNumber; } set { itemNumber = value; } }
+
+        [XmlElement(ElementName = "type")]
+        public string Type { get { return type; } set { type = value; } }
+        
+        [XmlElement(ElementName = "name")]
+        public string Name { get { return name; } set { name = value; } }
+        
+        [XmlElement(ElementName = "description")]
+        public string Description { get { return description; } set { description = value; } }
+        
+        [XmlElement(ElementName = "cost")]
+        public double Cost { get { return cost; } set { cost = value; } }
             
         private List<Product> products = new List<Product>();        
         public static List<Product> GetProducts()
