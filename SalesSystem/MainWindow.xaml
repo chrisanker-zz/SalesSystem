@@ -3,10 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SalesSystem"
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="600">
     <Grid>
-        <DataGrid x:Name="dgSalesOverview" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="dgSalesOverview_SelectionChanged"/>
+        <Grid.Resources>
+            <XmlDataProvider x:Key="ProductData" Source="XMLFile1.xml" XPath="/productListing/productType/product"/>
+        </Grid.Resources>
+        <DataGrid x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

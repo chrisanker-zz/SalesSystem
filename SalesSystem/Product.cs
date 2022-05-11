@@ -31,8 +31,7 @@ namespace SalesSystem
         
         [XmlElement(ElementName = "cost")]
         public double Cost { get { return cost; } set { cost = value; } }
-            
-        private List<Product> products = new List<Product>();        
+
         public static List<Product> GetProducts()
         {
             return new List<Product>(new Product[2]
@@ -40,6 +39,6 @@ namespace SalesSystem
                 new Product() {ItemNumber = 1234, Type = "Spare parts", Name = "4 x 17 inch tyres", Description = "Nice winter tyres!", Cost = 3000.00},
                 new Product() {ItemNumber = 54561, Type = "Spare parts", Name = "Wind shield wipers", Description = "Get that grit off your wind shield!", Cost = 1000.00}
             });            
-        }
+        }        
     }
 }

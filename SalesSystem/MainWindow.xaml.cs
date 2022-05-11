@@ -22,8 +22,7 @@ namespace SalesSystem
     {
         public MainWindow()
         {
-            InitializeComponent();
-            dgSalesOverview.ItemsSource = Product.GetProducts();
+            InitializeComponent();            
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

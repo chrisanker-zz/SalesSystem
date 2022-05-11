@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,11 @@ namespace SalesSystem
 
         [XmlText]
         public string Text { get; set; }
+
+        public static List<Product> GetProducts()
+        {
+
+            return null;
+        }
     }
 }
