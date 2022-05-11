@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="600">
-    <Grid>
+        Title="MainWindow" Height="360" Width="800">
+    <Grid Margin="0,0,225,90">
         <Grid.Resources>
             <XmlDataProvider x:Key="ProductData" Source="XMLFile1.xml" XPath="/productListing/productType/product"/>
         </Grid.Resources>
-        <DataGrid x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="0,50,50,10" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}" MaxWidth="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding XPath=name}" MaxWidth="200"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Binding="{Binding XPath=type}" MaxWidth="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cost" Binding="{Binding XPath=cost}" MaxWidth="100"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
