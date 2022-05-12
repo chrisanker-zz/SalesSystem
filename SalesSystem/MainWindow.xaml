@@ -4,18 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="800">
-    <Grid Margin="0,0,225,90">
+        Title="MainWindow" Height="248" Width="792">
+    <Grid>
         <Grid.Resources>
             <XmlDataProvider x:Key="ProductData" Source="XMLFile1.xml" XPath="/productListing/productType/product"/>
         </Grid.Resources>
-        <DataGrid x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="0,50,50,10" AutoGenerateColumns="False" IsReadOnly="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>            
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="10" AutoGenerateColumns="False" IsReadOnly="True"
+                  >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}" MaxWidth="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding XPath=name}" MaxWidth="200"></DataGridTextColumn>
-                <DataGridTextColumn Header="Type" Binding="{Binding XPath=type}" MaxWidth="100"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cost" Binding="{Binding XPath=cost}" MaxWidth="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}" Width ="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding XPath=name}" Width ="3*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Binding="{Binding XPath=type}" Width ="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Cost" Binding="{Binding XPath=cost}" Width ="*" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Total Revenue" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
+            <Button Width="75" Height="35" Margin="5" Command="{Binding PressThisButtonCommand}"/>
+            <Button Width="75" Height="35" Margin="5"/>
+            <Button Width="75" Height="35" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>
