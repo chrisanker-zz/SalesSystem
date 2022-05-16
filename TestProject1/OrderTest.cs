@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SalesSystem;
+using System;
 using System.Xml;
 
 namespace TestProject1
@@ -26,8 +27,8 @@ namespace TestProject1
         public void retrievesCostForItemNumber34961()
         {
             Product product = new Product();
-            double cost = product.GetCost(34961);
-            Assert.AreEqual(229.00, cost);
+            string cost = product.GetCost("34961");
+            Assert.AreEqual("229.00", cost);
         }
     }
 }
