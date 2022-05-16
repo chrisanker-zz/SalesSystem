@@ -22,5 +22,12 @@ namespace TestProject1
             total = order.GetOrderTotal(2);
             Assert.AreEqual(458.00, total);
         }
+        [TestMethod]
+        public void retrievesCostForItemNumber34961()
+        {
+            Product product = new Product();
+            double cost = product.GetCost(34961);
+            Assert.AreEqual(229.00, cost);
+        }
     }
 }
