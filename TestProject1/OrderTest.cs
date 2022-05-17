@@ -25,14 +25,12 @@ namespace TestProject1
             Assert.AreEqual(458.00, total);
         }
         [TestMethod]
-        public void retrievesCostForItemNumber34961()
+        public void retrievesCostForItemNumber()
         {
-            string cost = product.GetCost("34961");
+            string cost = null;
+            cost = product.GetCost("34961");
             Assert.AreEqual("229.00", cost);
-        }[TestMethod]
-        public void retrievesCostForItemNumber99323140138()
-        {            
-            string cost = product.GetCost("99323140138");
+            cost = product.GetCost("99323140138");
             Assert.AreEqual("149.00", cost);
         }
     }
