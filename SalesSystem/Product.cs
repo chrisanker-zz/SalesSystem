@@ -9,6 +9,13 @@ namespace SalesSystem
 {
     public class Product
     {
+        private string itemNumber;
+
+        public Product(string itemNumber)
+        {
+            this.itemNumber = itemNumber;
+        }
+
         public string GetCost(string itemNumber)
         {
             string cost = null;            
@@ -37,6 +44,11 @@ namespace SalesSystem
             CultureInfo cul = new CultureInfo("en-GB");
             cul.NumberFormat.NumberDecimalSeparator = ".";
             return Convert.ToDouble(cost,cul);
+        }
+
+        internal string GetItemNumber()
+        {
+            return this.itemNumber;
         }
     }
 }
