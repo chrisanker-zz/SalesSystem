@@ -9,11 +9,16 @@ namespace SalesSystem
         
     {
         private double ordertotal = 0;
-        public double GetOrderTotalV3()
+        private List<Product> products = new List<Product>();
+        public Order(List<Product> list)
+        {
+            products = list;
+        }
+        public double GetOrderTotal()
         {
             return ordertotal;
         }
-        public void SetOrderTotalV3(List<Product> shoppingCart)
+        public void SetOrderTotal(List<Product> shoppingCart)
         {
             for (int i = 0; i < shoppingCart.Count; i++)
             {
