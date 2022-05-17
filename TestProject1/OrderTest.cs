@@ -49,7 +49,13 @@ namespace TestProject1
         [TestMethod]
         public void calculateOrderTotalOneItem34961OneItem99323140138()
         {
-            total = order.GetOrderTotalV2();
+            Product p1 = new Product("34961");
+            Product p2 = new Product("99323140138");
+            List<Product> shoppingCart = new List<Product>();
+            shoppingCart.Add(p1);
+            shoppingCart.Add(p2);
+            order.SetOrderTotalV3(shoppingCart);
+            total = order.GetOrderTotalV3();
             Assert.AreEqual(378.00, total);
         }
     }
