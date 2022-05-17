@@ -9,6 +9,7 @@ namespace TestProject1
     public class OrderTest
     {
         Order order = new Order();
+        Product product = new Product();
         double total;
         
         [TestMethod]
@@ -26,9 +27,13 @@ namespace TestProject1
         [TestMethod]
         public void retrievesCostForItemNumber34961()
         {
-            Product product = new Product();
             string cost = product.GetCost("34961");
             Assert.AreEqual("229.00", cost);
+        }[TestMethod]
+        public void retrievesCostForItemNumber99323140138()
+        {            
+            string cost = product.GetCost("99323140138");
+            Assert.AreEqual("149.00", cost);
         }
     }
 }
