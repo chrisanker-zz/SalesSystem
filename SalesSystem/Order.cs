@@ -15,5 +15,14 @@ namespace SalesSystem
             string str = xmlNode1.SelectSingleNode("cost").InnerText;
             return XmlConvert.ToDouble(str) * itemcount;
         }
+
+        public double GetOrderTotalV2()
+        {
+            Product p1 = new Product();
+            double p1Cost = p1.GetCostV2("34961");
+            Product p2 = new Product();
+            double p2Cost = p2.GetCostV2("99323140138");
+            return p1Cost + p2Cost;
+        }
     }
 }

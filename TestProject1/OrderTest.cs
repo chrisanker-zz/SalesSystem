@@ -33,5 +33,11 @@ namespace TestProject1
             cost = product.GetCost("99323140138");
             Assert.AreEqual("149.00", cost);
         }
+        [TestMethod]
+        public void calculateOrderTotalOneItem34961OneItem99323140138()
+        {
+            total = order.GetOrderTotalV2();
+            Assert.AreEqual(378.00, total);
+        }
     }
 }
