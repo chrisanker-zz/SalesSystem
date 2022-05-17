@@ -29,23 +29,6 @@ namespace SalesSystem
             }
             return cost;
         }
-
-        public double GetCostV2(string itemNumber)
-        {
-            string cost = null;
-            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
-            var query = from c in xml.Root.Descendants("product")
-                        where c.Element("itemNumber").Value == itemNumber
-                        select c.Element("cost").Value;
-            foreach (string item in query)
-            {
-                cost = item;
-            }
-            CultureInfo cul = new CultureInfo("en-GB");
-            cul.NumberFormat.NumberDecimalSeparator = ".";
-            return Convert.ToDouble(cost,cul);
-        }
-
         internal string GetItemNumber()
         {
             return this.itemNumber;
