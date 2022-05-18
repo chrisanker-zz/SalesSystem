@@ -24,9 +24,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
-            <Button Width="75" Height="35" Margin="5" Command="{Binding PressThisButtonCommand}"/>
-            <Button Width="75" Height="35" Margin="5"/>
-            <Button Width="75" Height="35" Margin="5"/>
+            <Button x:Name="btCreateOrder" Content="Create Order" Width="75" Height="35" Margin="5" Command="{Binding PressThisButtonCommand}" Click="btCreateOrder_Click"/>
         </StackPanel>
     </Grid>
 </Window>

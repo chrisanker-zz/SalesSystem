@@ -2,7 +2,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SalesSystem;
 using System;
 using System.Collections.Generic;
-using System.Xml;
 
 namespace TestProject1
 {
@@ -43,13 +42,13 @@ namespace TestProject1
         [TestMethod]
         public void retrievesCostForItemNumber()
         {
-            string cost = null;
+            double cost = 0;
             Product p1 = new Product("34961");
             Product p2 = new Product("99323140138");
-            cost = p1.GetCost("34961");
-            Assert.AreEqual("229.00", cost);
-            cost = p2.GetCost("99323140138");
-            Assert.AreEqual("149.00", cost);
+            //cost = Double.Parse(p1.GetCost("34961"));
+            Assert.AreEqual(229.00, p1.GetCostV2("34961"));
+            ///*cost = p2.GetCost("99323140138");
+            Assert.AreEqual(149.00, p2.GetCostV2("99323140138"));
         }
         [TestMethod]
         public void calculateOrderTotalOneItem34961OneItem99323140138()
