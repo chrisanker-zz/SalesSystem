@@ -10,6 +10,7 @@ namespace SalesSystem
     public class Product
     {
         private string itemNumber;
+        private string name;
 
         public Product(string itemNumber)
         {
@@ -33,6 +34,19 @@ namespace SalesSystem
                 cost = Convert.ToDouble(item,cul);
             }
             return cost;
+        }
+
+        public string GetName()
+        {
+            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            var query = from c in xml.Root.Descendants("product")
+                        where c.Element("itemNumber").Value == itemNumber
+                        select c.Element("name").Value;
+            foreach (string item in query)
+            {
+                name = item;
+            }
+            return name;
         }
     }
 }

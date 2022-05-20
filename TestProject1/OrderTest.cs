@@ -58,6 +58,14 @@ namespace TestProject1
             order.SetOrderTotal(shoppingCart);
             total = order.GetOrderTotal();
             Assert.AreEqual(378.00, total);
-        }        
+        }
+        [TestMethod]
+        public void returnsProductNameByItemNumber()
+        {
+            Product p1 = new Product("34961");
+            Assert.AreEqual("Iso stik, Pioneer QDP3012", p1.GetName());
+            Product p2 = new Product("42625");
+            Assert.AreEqual("Saphe One trafikalarm", p2.GetName());
+        }
     }
 }
