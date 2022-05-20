@@ -8,6 +8,7 @@ namespace SalesSystem
     public partial class CreateOrder : Window
     {
         List<string> productCatalogue = new List<string>();
+        List<string> shoppingCart = new List<string>();
         public CreateOrder()
         {
             InitializeComponent();            
@@ -19,13 +20,30 @@ namespace SalesSystem
                 productCatalogue.Add(product);                
             }
             lbProductCatalogue.ItemsSource = productCatalogue;
+            lbShoppingCart.ItemsSource = shoppingCart;
         }
 
         private void btAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            lbShoppingCart.Items.Add(lbProductCatalogue.SelectedItem);            
+            shoppingCart.Add((string)lbProductCatalogue.SelectedItem);
+            ReassignItemsSourceToShoppingCart();
             productCatalogue.RemoveAt(lbProductCatalogue.SelectedIndex);
-            lbProductCatalogue.ItemsSource = null;            
+            ReassignItemsSourceToProdCat();
+            if (productCatalogue.Count == 0)
+            {
+                btAddToCart.IsEnabled = false;
+            }
+        }
+
+        private void ReassignItemsSourceToShoppingCart()
+        {
+            lbShoppingCart.ItemsSource = null;
+            lbShoppingCart.ItemsSource = shoppingCart;
+        }
+
+        private void ReassignItemsSourceToProdCat()
+        {
+            lbProductCatalogue.ItemsSource = null;
             lbProductCatalogue.ItemsSource = productCatalogue;
         }
 
