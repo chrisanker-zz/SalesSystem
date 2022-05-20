@@ -38,7 +38,7 @@ namespace SalesSystem
         private void btCreateOrder_Click(object sender, RoutedEventArgs e)
         {
             CreateOrder createOrder = new CreateOrder();
-            createOrder.Show();
+            createOrder.ShowDialog();
         }
     }
 }
