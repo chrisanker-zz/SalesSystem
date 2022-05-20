@@ -24,7 +24,7 @@ namespace SalesSystem
             {
                 CultureInfo cul = new CultureInfo("en-GB");
                 cul.NumberFormat.NumberDecimalSeparator = ".";
-                ordertotal += Convert.ToDouble(shoppingCart[i].GetCost(shoppingCart[i].GetItemNumber()),cul);
+                ordertotal += shoppingCart[i].GetCost(shoppingCart[i].GetItemNumber());
             }
         }
     }

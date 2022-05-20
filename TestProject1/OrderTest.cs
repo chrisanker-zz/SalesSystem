@@ -44,11 +44,9 @@ namespace TestProject1
         {
             double cost = 0;
             Product p1 = new Product("34961");
-            Product p2 = new Product("99323140138");
-            //cost = Double.Parse(p1.GetCost("34961"));
-            Assert.AreEqual(229.00, p1.GetCostV2("34961"));
-            ///*cost = p2.GetCost("99323140138");
-            Assert.AreEqual(149.00, p2.GetCostV2("99323140138"));
+            Product p2 = new Product("99323140138");            
+            Assert.AreEqual(229.00, p1.GetCost("34961"));            
+            Assert.AreEqual(149.00, p2.GetCost("99323140138"));
         }
         [TestMethod]
         public void calculateOrderTotalOneItem34961OneItem99323140138()
