@@ -28,5 +28,10 @@ namespace SalesSystem
             lbProductCatalogue.ItemsSource = null;            
             lbProductCatalogue.ItemsSource = productCatalogue;
         }
+
+        private void btRemoveFromCart_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

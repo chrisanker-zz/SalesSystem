@@ -27,5 +27,10 @@ namespace SalesSystem
                 ordertotal += shoppingCart[i].GetCost(shoppingCart[i].GetItemNumber());
             }
         }
+
+        public void RemoveProduct(Product selectedProduct)
+        {
+            products.Remove(selectedProduct);            
+        }
     }
 }

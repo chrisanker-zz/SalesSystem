@@ -24,7 +24,7 @@
         </ListBox>
         <StackPanel Grid.Column="1" Margin="10">            
             <Button x:Name="btAddToCart" Content="Add >>" Height="20" Width="70" Margin="0,150,0,0" Click="btAddToCart_Click"/>
-            <Button x:Name="btRemoveFromCart" Content ="&lt;&lt; Remove" Height="20" Width="70" Margin="0,50,0,0"/>
+            <Button x:Name="btRemoveFromCart" Content ="&lt;&lt; Remove" Height="20" Width="70" Margin="0,50,0,0" Click="btRemoveFromCart_Click"/>
         </StackPanel>
     </Grid>
 </Window>

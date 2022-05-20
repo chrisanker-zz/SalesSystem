@@ -67,5 +67,12 @@ namespace TestProject1
             Product p2 = new Product("42625");
             Assert.AreEqual("Saphe One trafikalarm", p2.GetName());
         }
+        [TestMethod]
+        public void removesOneSelectedProductFromCart()
+        {
+            shoppingCart.Add(new Product("34961"));            
+            order.RemoveProduct(shoppingCart[0]);
+            Assert.AreEqual(0,shoppingCart.Count);
+        }
     }
 }
