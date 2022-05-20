@@ -13,8 +13,7 @@
             <RowDefinition Height="*"/>            
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="10" AutoGenerateColumns="False" IsReadOnly="True"
-                  >
+        <DataGrid Grid.Row="0" x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="10" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Item Number" Binding="{Binding XPath=itemNumber}" Width ="*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding XPath=name}" Width ="3*"></DataGridTextColumn>
