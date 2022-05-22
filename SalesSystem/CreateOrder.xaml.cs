@@ -11,6 +11,7 @@ namespace SalesSystem
         List<string> productCatalogueListBox = new List<string>();
         List<string> ShoppingCartListBox = new List<string>();
         Order order;
+        List<Product> productsInCart;
         public CreateOrder()
         {
             InitializeComponent();
@@ -88,7 +89,7 @@ namespace SalesSystem
         private void btConfirm_Click(object sender, RoutedEventArgs e)
         {
             Product product;
-            List<Product> productsInCart = new List<Product>();
+            productsInCart = new List<Product>();
             order = new Order(productsInCart);
             foreach (string item in ShoppingCartListBox)
             {
@@ -102,9 +103,13 @@ namespace SalesSystem
 
         private void ConfirmOrderMessageBox()
         {
-            MessageBox.Show("Order total: " + order.GetOrderTotal() + "\nDo you wish to confirm the order?",
+            if(MessageBox.Show("Order total: " + order.GetOrderTotal() + "\nDo you wish to confirm the order?",
                             "Confirm Order",
-                            MessageBoxButton.YesNo);
+                            MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                order.WriteToLog(productsInCart);
+            }
+            
             
         }
     }

@@ -83,7 +83,8 @@ namespace TestProject1
         [TestMethod]
         public void WritesOrderDetailsToSalesLog()
         {
-            order.WriteToLog();            
+            shoppingCart.Add(new Product("34961"));
+            order.WriteToLog(shoppingCart);            
             Assert.AreEqual("34961, Iso stik, Pioneer QDP3012, " + 229.00, order.GetLogEntry());
         }
 
