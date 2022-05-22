@@ -50,9 +50,17 @@ namespace SalesSystem
             return name;
         }
 
-        public string GetItemNumber(string v)
+        public string GetItemNumber(string productName)
         {
-            return "34961";
+            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            var query = from c in xml.Root.Descendants("product")
+                        where c.Element("name").Value == productName
+                        select c.Element("itemNumber").Value;
+            foreach (string item in query)
+            {
+                itemNumber = item;
+            }
+            return itemNumber;            
         }
     }
 }
