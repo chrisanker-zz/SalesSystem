@@ -9,7 +9,8 @@ namespace SalesSystem
     public partial class CreateOrder : Window
     {
         List<string> productCatalogue = new List<string>();
-        List<string> shoppingCart = new List<string>();        
+        List<string> shoppingCart = new List<string>();
+        Order order;
         public CreateOrder()
         {
             InitializeComponent();
@@ -86,7 +87,13 @@ namespace SalesSystem
 
         private void btConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Product product = new Product();            
+            Product product = new Product();
+            List<Product> productsInCart = new List<Product>();
+            product.GetItemNumber(shoppingCart[0]);
+            order = new Order(productsInCart);
+            productsInCart.Add(product);
+            order.SetOrderTotal(productsInCart);            
+            MessageBox.Show("Order total: " + order.GetOrderTotal());
         }
     }
 }

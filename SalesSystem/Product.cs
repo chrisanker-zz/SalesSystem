@@ -60,7 +60,7 @@ namespace SalesSystem
             {
                 itemNumber = item;
             }
-            return itemNumber;            
+            return itemNumber;         
         }
     }
 }
