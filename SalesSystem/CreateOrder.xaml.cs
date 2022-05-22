@@ -8,8 +8,8 @@ namespace SalesSystem
 {
     public partial class CreateOrder : Window
     {
-        List<string> productCatalogue = new List<string>();
-        List<string> shoppingCart = new List<string>();
+        List<string> productCatalogueListBox = new List<string>();
+        List<string> ShoppingCartListBox = new List<string>();
         Order order;
         public CreateOrder()
         {
@@ -21,21 +21,21 @@ namespace SalesSystem
                         select c.Element("name").Value;
             foreach (string product in query)
             {
-                productCatalogue.Add(product);                
+                productCatalogueListBox.Add(product);                
             }
-            lbProductCatalogue.ItemsSource = productCatalogue;
-            lbShoppingCart.ItemsSource = shoppingCart;
+            lbProductCatalogue.ItemsSource = productCatalogueListBox;
+            lbShoppingCart.ItemsSource = ShoppingCartListBox;
         }
 
         private void btAddToCart_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                shoppingCart.Add((string)lbProductCatalogue.SelectedItem);
+                ShoppingCartListBox.Add((string)lbProductCatalogue.SelectedItem);
                 ReassignShoppingCartToItemsSource();
-                productCatalogue.RemoveAt(lbProductCatalogue.SelectedIndex);
+                productCatalogueListBox.RemoveAt(lbProductCatalogue.SelectedIndex);
                 ReassignProdCatToItemsSource();
-                if (productCatalogue.Count == 0)
+                if (productCatalogueListBox.Count == 0)
                 {
                     btAddToCart.IsEnabled = false;
                 }
@@ -50,24 +50,24 @@ namespace SalesSystem
         private void ReassignShoppingCartToItemsSource()
         {
             lbShoppingCart.ItemsSource = null;
-            lbShoppingCart.ItemsSource = shoppingCart;
+            lbShoppingCart.ItemsSource = ShoppingCartListBox;
         }
 
         private void ReassignProdCatToItemsSource()
         {
             lbProductCatalogue.ItemsSource = null;
-            lbProductCatalogue.ItemsSource = productCatalogue;
+            lbProductCatalogue.ItemsSource = productCatalogueListBox;
         }
 
         private void btRemoveFromCart_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                productCatalogue.Add((string)lbShoppingCart.SelectedItem);
+                productCatalogueListBox.Add((string)lbShoppingCart.SelectedItem);
                 ReassignProdCatToItemsSource();
-                shoppingCart.RemoveAt(lbShoppingCart.SelectedIndex);
+                ShoppingCartListBox.RemoveAt(lbShoppingCart.SelectedIndex);
                 ReassignShoppingCartToItemsSource();
-                if (shoppingCart.Count == 0) { btRemoveFromCart.IsEnabled = false; }
+                if (ShoppingCartListBox.Count == 0) { btRemoveFromCart.IsEnabled = false; }
             }
             catch(Exception ex)
             {
@@ -87,13 +87,25 @@ namespace SalesSystem
 
         private void btConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Product product = new Product();
+            Product product;
             List<Product> productsInCart = new List<Product>();
-            product.GetItemNumber(shoppingCart[0]);
             order = new Order(productsInCart);
-            productsInCart.Add(product);
-            order.SetOrderTotal(productsInCart);            
-            MessageBox.Show("Order total: " + order.GetOrderTotal());
+            foreach (string item in ShoppingCartListBox)
+            {
+                product = new Product();
+                product.GetItemNumber(item);
+                productsInCart.Add(product);
+            }
+            order.SetOrderTotal(productsInCart);
+            ConfirmOrderMessageBox();
+        }
+
+        private void ConfirmOrderMessageBox()
+        {
+            MessageBox.Show("Order total: " + order.GetOrderTotal() + "\nDo you wish to confirm the order?",
+                            "Confirm Order",
+                            MessageBoxButton.YesNo);
+            
         }
     }
 }

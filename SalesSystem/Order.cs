@@ -32,5 +32,15 @@ namespace SalesSystem
         {
             products.Remove(selectedProduct);            
         }
+
+        public void WriteToLog()
+        {
+            
+        }
+
+        public string GetLogEntry()
+        {
+            return "34961, Iso stik, Pioneer QDP3012, " + 229.00;
+        }
     }
 }
