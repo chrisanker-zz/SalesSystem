@@ -41,7 +41,7 @@ namespace SalesSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please select a product to add to cart.");
+                MessageBox.Show("Please select a product to add to cart.");                
             }
             
         }
@@ -82,6 +82,11 @@ namespace SalesSystem
         private void lbShoppingCart_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if(!btRemoveFromCart.IsEnabled) { btRemoveFromCart.IsEnabled = true; }
+        }
+
+        private void btConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            Product product = new Product();            
         }
     }
 }

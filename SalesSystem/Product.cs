@@ -15,7 +15,8 @@ namespace SalesSystem
         public Product(string itemNumber)
         {
             this.itemNumber = itemNumber;
-        }        
+        }
+        public Product() { }
         internal string GetItemNumber()
         {
             return this.itemNumber;
@@ -47,6 +48,11 @@ namespace SalesSystem
                 name = item;
             }
             return name;
+        }
+
+        public string GetItemNumber(string v)
+        {
+            return "34961";
         }
     }
 }

@@ -19,12 +19,17 @@
         <ListBox x:Name="lbProductCatalogue" Grid.Column="0" Margin="10" SelectionChanged="lbProductCatalogue_SelectionChanged">
             
         </ListBox>
+        <StackPanel>
+            
+        </StackPanel>
         <ListBox x:Name="lbShoppingCart" Grid.Column="2" Margin="10" SelectionChanged="lbShoppingCart_SelectionChanged">
 
         </ListBox>
         <StackPanel Grid.Column="1" Margin="10">            
-            <Button x:Name="btAddToCart" Content="Add >>" Height="20" Width="70" Margin="0,150,0,0" Click="btAddToCart_Click"/>
-            <Button x:Name="btRemoveFromCart" Content ="&lt;&lt; Remove" Height="20" Width="70" Margin="0,50,0,0" Click="btRemoveFromCart_Click"/>
+            <Button x:Name="btAddToCart" Content="Add >>" Height="20" Width="70" Margin="0,50,0,0" Click="btAddToCart_Click"/>
+            <Button x:Name="btRemoveFromCart" Content ="&lt;&lt; Remove" Height="20" Width="70" Margin="0,30,0,0" Click="btRemoveFromCart_Click"/>
+            <Button x:Name="btConfirm" Content="Confirm" Height="40" Width=" 80" Margin="0,100,0,0" Click="btConfirm_Click"/>
+            <Button x:Name="btClear" Content="Clear" Height="40" Width=" 80" Margin="0,30,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

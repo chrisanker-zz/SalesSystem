@@ -74,5 +74,11 @@ namespace TestProject1
             order.RemoveProduct(shoppingCart[0]);
             Assert.AreEqual(0,shoppingCart.Count);
         }
+        [TestMethod]
+        public void GetsItemNumberByProductName()
+        {
+            Product p1 = new Product();
+            Assert.AreEqual("34961", p1.GetItemNumber("Iso stik, Pioneer QDP3012"));
+        }
     }
 }
