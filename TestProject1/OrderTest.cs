@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SalesSystem;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace TestProject1
 {
@@ -12,6 +14,8 @@ namespace TestProject1
         Order order;
         double total;
         List<Product> shoppingCart;
+        private StreamReader streamReader;
+        private object reader;
 
         [TestInitialize]
         public void SetupForTest()
@@ -83,8 +87,20 @@ namespace TestProject1
         [TestMethod]
         public void GetSalesTotalOf34961FromSalesLog()
         {
-            SalesLog salesLog = new SalesLog();            
-            Assert.AreEqual(598, salesLog.GetTotalByItem("34961"));
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            streamReader = new StreamReader(assemblyDirectory + @"\" + "SalesLogTest.txt");
+            SalesLog salesLog = new SalesLog(streamReader,reader);            
+            Assert.AreEqual(458.00, salesLog.GetTotalByItem("34961"));
+        }
+        [TestMethod]
+        public void GetSalesTotalOf99323140138FromSalesLog()
+        {
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            streamReader = new StreamReader(assemblyDirectory + @"\" + "SalesLogTest.txt");
+            SalesLog salesLog = new SalesLog(streamReader,reader);            
+            Assert.AreEqual(149.00, salesLog.GetTotalByItem("99323140138"));
         }
 
     }

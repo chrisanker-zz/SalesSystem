@@ -17,4 +17,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SalesLog.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
