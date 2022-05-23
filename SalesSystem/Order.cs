@@ -45,11 +45,6 @@ namespace SalesSystem
                         + shoppingCart[i].GetCost(shoppingCart[i].GetItemNumber()));
                 }
             }
-        }
-
-        public string GetLogEntry()
-        {
-            return "34961, Iso stik, Pioneer QDP3012, " + 229.00;
-        }
+        }        
     }
 }
