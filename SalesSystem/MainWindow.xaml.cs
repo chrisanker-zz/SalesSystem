@@ -25,6 +25,7 @@ namespace SalesSystem
             InitializeComponent();
             ProductCatalogue pc = new ProductCatalogue();
             pc.GenerateProductCatalogue();
+            dgRevenueView.DataContext = pc.ProductNames;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
