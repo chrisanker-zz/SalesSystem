@@ -21,10 +21,8 @@ namespace SalesSystem
             this.streamReader = sr;
             this.reader = reader;
         }
-
         public double GetTotalByItem(string itemNumber)
         {
-            //streamReader = new StreamReader(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\SalesLog.txt");
             string line;
             double total = 0;
             while ((line = streamReader.ReadLine()) != null)
@@ -36,8 +34,7 @@ namespace SalesSystem
                     cul.NumberFormat.NumberDecimalSeparator = ".";
                     total += Convert.ToDouble(cost,cul);
                     Console.WriteLine(total);
-                }
-                
+                }                
             }
             return total;
         }
