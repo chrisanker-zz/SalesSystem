@@ -22,14 +22,14 @@ namespace SalesSystem
             this.reader = reader;
         }
 
-        public double GetTotalByItem(string v)
+        public double GetTotalByItem(string itemNumber)
         {
             //streamReader = new StreamReader(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\SalesLog.txt");
             string line;
             double total = 0;
             while ((line = streamReader.ReadLine()) != null)
             {
-                if (line.Contains(v))
+                if (line.Contains(itemNumber))
                 {
                     string cost = line.Split(';')[2];
                     CultureInfo cul = new CultureInfo("en-GB");

@@ -22,6 +22,9 @@ namespace TestProject1
         {
             shoppingCart = new List<Product>();
             order = new Order(shoppingCart);
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            streamReader = new StreamReader(assemblyDirectory + @"\" + "SalesLogTest.txt");
         }
         [TestMethod]
         public void calculateOrderTotalOneItem34961()
@@ -87,18 +90,12 @@ namespace TestProject1
         [TestMethod]
         public void GetSalesTotalOf34961FromSalesLog()
         {
-            string assemblyName = Assembly.GetExecutingAssembly().Location;
-            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
-            streamReader = new StreamReader(assemblyDirectory + @"\" + "SalesLogTest.txt");
             SalesLog salesLog = new SalesLog(streamReader,reader);            
             Assert.AreEqual(458.00, salesLog.GetTotalByItem("34961"));
         }
         [TestMethod]
         public void GetSalesTotalOf99323140138FromSalesLog()
-        {
-            string assemblyName = Assembly.GetExecutingAssembly().Location;
-            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
-            streamReader = new StreamReader(assemblyDirectory + @"\" + "SalesLogTest.txt");
+        {            
             SalesLog salesLog = new SalesLog(streamReader,reader);            
             Assert.AreEqual(149.00, salesLog.GetTotalByItem("99323140138"));
         }
