@@ -11,33 +11,15 @@ namespace SalesSystem
     {
         private StreamReader streamReader;
         private object reader;
+        private double total = 0;
         public SalesLog(StreamReader sr, object reader)
         {
             this.streamReader = sr;
             this.reader = reader;
         }
-        public double GetTotalByItem(string itemNumber)
-        {
-            string line;
-            double total = 0;
-            while ((line = streamReader.ReadLine()) != null)
-            {
-                if (line.Contains(itemNumber))
-                {
-                    string cost = line.Split(';')[2];
-                    CultureInfo cul = new CultureInfo("en-GB");
-                    cul.NumberFormat.NumberDecimalSeparator = ".";
-                    total += Convert.ToDouble(cost,cul);
-                    Console.WriteLine(total);
-                }                
-            }
-            return total;
-        }
-
         public double GetTotalByItem(List<string> list)
         {
-            string line;
-            double total = 0;
+            string line;            
             while ((line = streamReader.ReadLine()) != null)
             {
                 for(int i = 0; i < list.Count; i++)
