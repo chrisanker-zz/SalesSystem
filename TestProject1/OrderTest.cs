@@ -86,28 +86,6 @@ namespace TestProject1
         {
             Product p1 = new Product();
             Assert.AreEqual("34961", p1.GetItemNumber("Iso stik, Pioneer QDP3012"));
-        }
-        [TestMethod]
-        public void GetSalesTotalOf34961FromSalesLog()
-        {
-            SalesLog salesLog = new SalesLog(streamReader,reader);            
-            Assert.AreEqual(458.00, salesLog.GetTotalByItem("34961"));
-        }
-        [TestMethod]
-        public void GetSalesTotalOf99323140138FromSalesLog()
-        {            
-            SalesLog salesLog = new SalesLog(streamReader,reader);            
-            Assert.AreEqual(149.00, salesLog.GetTotalByItem("99323140138"));
-        }
-        [TestMethod]
-        public void GetSalesTotalOf99323140138And34961FromSalesLog()
-        {
-            List<string> itemNumbers = new List<string>();
-            itemNumbers.Add("99323140138");
-            itemNumbers.Add("34961");
-            SalesLog salesLog = new SalesLog(streamReader, reader);            
-            Assert.AreEqual(607.00, salesLog.GetTotalByItem(itemNumbers));
-        }
-
+        }        
     }
 }
