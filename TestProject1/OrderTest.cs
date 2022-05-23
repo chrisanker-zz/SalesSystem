@@ -99,6 +99,15 @@ namespace TestProject1
             SalesLog salesLog = new SalesLog(streamReader,reader);            
             Assert.AreEqual(149.00, salesLog.GetTotalByItem("99323140138"));
         }
+        [TestMethod]
+        public void GetSalesTotalOf99323140138And34961FromSalesLog()
+        {
+            List<string> itemNumbers = new List<string>();
+            itemNumbers.Add("99323140138");
+            itemNumbers.Add("34961");
+            SalesLog salesLog = new SalesLog(streamReader, reader);            
+            Assert.AreEqual(607.00, salesLog.GetTotalByItem(itemNumbers));
+        }
 
     }
 }
