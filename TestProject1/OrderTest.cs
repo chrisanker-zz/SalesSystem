@@ -81,11 +81,10 @@ namespace TestProject1
             Assert.AreEqual("34961", p1.GetItemNumber("Iso stik, Pioneer QDP3012"));
         }
         [TestMethod]
-        public void WritesOrderDetailsToSalesLog()
+        public void GetSalesTotalOf34961FromSalesLog()
         {
-            shoppingCart.Add(new Product("34961"));
-            order.WriteToLog(shoppingCart);            
-            Assert.AreEqual("34961, Iso stik, Pioneer QDP3012, " + 229.00, order.GetLogEntry());
+            SalesLog salesLog = new SalesLog();            
+            Assert.AreEqual(598, salesLog.GetTotalByItem("34961"));
         }
 
     }

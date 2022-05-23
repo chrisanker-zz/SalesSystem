@@ -8,6 +8,7 @@ namespace SalesSystem
 {
     public partial class CreateOrder : Window
     {
+        CreateOrder createOrder;
         List<string> productCatalogueListBox = new List<string>();
         List<string> ShoppingCartListBox = new List<string>();
         Order order;
@@ -88,17 +89,24 @@ namespace SalesSystem
 
         private void btConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Product product;
-            productsInCart = new List<Product>();
-            order = new Order(productsInCart);
-            foreach (string item in ShoppingCartListBox)
+            try
             {
-                product = new Product();
-                product.GetItemNumber(item);
-                productsInCart.Add(product);
+                Product product;
+                productsInCart = new List<Product>();
+                order = new Order(productsInCart);
+                foreach (string item in ShoppingCartListBox)
+                {
+                    product = new Product();
+                    product.GetItemNumber(item);
+                    productsInCart.Add(product);
+                }
+                order.SetOrderTotal(productsInCart);
+                ConfirmOrderMessageBox();
             }
-            order.SetOrderTotal(productsInCart);
-            ConfirmOrderMessageBox();
+            catch(Exception ex)
+            {
+                MessageBox.Show("Please add a product to the cart.", "No Product Selected");
+            }
         }
 
         private void ConfirmOrderMessageBox()
@@ -108,6 +116,7 @@ namespace SalesSystem
                             MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 order.WriteToLog(productsInCart);
+                Close();
             }
             
             
