@@ -22,6 +22,7 @@ namespace SalesSystemTest
             ProductCatalogue pc = new ProductCatalogue();            
             pc.GenerateProductCatalogue();
             Assert.AreEqual("Iso stik, Pioneer QDP3012", pc.GetProductNameAtIndex(0));
+            Assert.AreEqual("Saphe One trafikalarm", pc.GetProductNameAtIndex(1));
         }
     }
 }
