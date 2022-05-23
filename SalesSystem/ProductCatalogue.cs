@@ -25,5 +25,10 @@ namespace SalesSystem
         {
             return productNames.Count;
         }
+
+        public string GetProductNameAtIndex(int index)
+        {
+            return (string)productNames[index];
+        }
     }
 }

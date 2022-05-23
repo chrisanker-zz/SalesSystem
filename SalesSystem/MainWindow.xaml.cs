@@ -22,7 +22,9 @@ namespace SalesSystem
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            ProductCatalogue pc = new ProductCatalogue();
+            pc.GenerateProductCatalogue();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
