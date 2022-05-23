@@ -14,7 +14,7 @@ namespace SalesSystem
         private double total = 0;
         public SalesLog(StreamReader sr, object reader)
         {
-            this.streamReader = sr;
+            streamReader = sr;
             this.reader = reader;
         }
         public double GetTotalByItem(List<string> list)
@@ -29,8 +29,7 @@ namespace SalesSystem
                         string cost = line.Split(';')[2];
                         CultureInfo cul = new CultureInfo("en-GB");
                         cul.NumberFormat.NumberDecimalSeparator = ".";
-                        total += Convert.ToDouble(cost, cul);
-                        Console.WriteLine(total);
+                        total += Convert.ToDouble(cost, cul);                        
                     }
                 }                
             }
