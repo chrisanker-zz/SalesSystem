@@ -36,11 +36,9 @@ namespace SalesSystem
         }
 
         public void WriteToLog()
-        {
-            string assemblyName = Assembly.GetExecutingAssembly().Location;
-            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
-            string filepath = assemblyDirectory + @"\" + "SalesLog.txt";
-            using (StreamWriter writer = new StreamWriter(filepath,true))
+        {            
+            string file = "SalesLog.txt";                     
+            using (StreamWriter writer = new StreamWriter(file,true))
             {                
                 for(int i = 0; i < products.Count; i++)
                 {

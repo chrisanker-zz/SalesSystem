@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SalesSystem
 {
@@ -20,18 +14,10 @@ namespace SalesSystem
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        
-        static void CallWriteToLogMethod()
-        {
-            List<Product> products = new List<Product>();
-            Order order = new Order(products);
-            products.Add(new Product("34961"));
-            order.WriteToLog();
-        }
+    {        
         public MainWindow()
-        {
-            InitializeComponent();            
+        {            
+            InitializeComponent();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,6 +39,20 @@ namespace SalesSystem
         private void ListBoxItem_SourceUpdated(object sender, DataTransferEventArgs e)
         {
 
+        }                
+
+        private static void GenerateSale()
+        {
+            List<Product> products = new List<Product>();
+            products.Add(new Product("260406084"));
+            Order order = new Order(products);
+            order.WriteToLog();
+        }
+
+        private void btStartThread_Click(object sender, RoutedEventArgs e)
+        {
+            Thread thread = new Thread(GenerateSale);
+            thread.Start();
         }
     }
 }

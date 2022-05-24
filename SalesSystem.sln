@@ -5,8 +5,6 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesSystem", "SalesSystem\SalesSystem.csproj", "{792703ED-3D33-4204-BD80-1749F3A079BA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7A0326F-2735-4012-8E6E-92EAF05214C0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesSystemTest", "TestProject1\SalesSystemTest.csproj", "{8203B3F4-E79A-48A8-BC76-79A260C45715}"
 EndProject
 Global
