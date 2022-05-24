@@ -10,8 +10,7 @@
             <XmlDataProvider x:Key="ProductData" Source="XMLFile1.xml" XPath="/productListing/productType/product"/>            
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>            
+            <ColumnDefinition Width="*"/>                       
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>            
@@ -23,15 +22,9 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding XPath=name}" Width ="3*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Type" Binding="{Binding XPath=type}" Width ="*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Cost" Binding="{Binding XPath=cost}" Width ="*" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Total Revenue" Width="*" ></DataGridTextColumn>                
+                <DataGridTextColumn Header="Total Revenue" Binding="{Binding TotalRevenue}" Width="*" ></DataGridTextColumn>                
             </DataGrid.Columns>
-        </DataGrid>
-        <DataGrid Grid.Column="1" x:Name="dgRevenueView" Margin="10" AutoGenerateColumns="False" >
-            <DataGrid.Columns>                
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding}"/>
-                <DataGridTextColumn Header="Revenue" Width="*" Binding="{Binding}"/>
-            </DataGrid.Columns>
-        </DataGrid>       
+        </DataGrid>               
         <StackPanel Grid.Row="1" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
             <Button x:Name="btCreateOrder" Content="Create Order" Width="75" Height="35" Margin="5" Command="{Binding PressThisButtonCommand}" Click="btCreateOrder_Click"/>
         </StackPanel>
