@@ -60,7 +60,7 @@ namespace SalesSystem
             do
             {
                 await Task.Run(() => CreateAndConfirmOrder());
-                await Task.Delay(1000);
+                await Task.Delay(15000);
             }
             while(AppIsRunning);
         }
