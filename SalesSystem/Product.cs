@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -23,8 +25,10 @@ namespace SalesSystem
         }
         public double GetCost(string itemNumber)
         {
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
             double cost = 0;
-            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            var xml = XDocument.Load(assemblyDirectory + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")
                         where c.Element("itemNumber").Value == itemNumber
                         select c.Element("cost").Value;
