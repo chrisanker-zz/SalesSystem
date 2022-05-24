@@ -23,12 +23,17 @@ namespace SalesSystem
         {
             return this.itemNumber;
         }
-        public double GetCost(string itemNumber)
+        public string GetAssemblyDirectory()
         {
             string assemblyName = Assembly.GetExecutingAssembly().Location;
             string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            return assemblyDirectory;
+        }
+        public double GetCost(string itemNumber)
+        {
+            
             double cost = 0;
-            var xml = XDocument.Load(assemblyDirectory + @"\" + "XMLFile1.xml");
+            var xml = XDocument.Load(GetAssemblyDirectory() + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")
                         where c.Element("itemNumber").Value == itemNumber
                         select c.Element("cost").Value;
