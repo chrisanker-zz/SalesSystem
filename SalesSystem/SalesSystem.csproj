@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SalesLog.txt" />
     <None Remove="XMLFile1.xml" />
   </ItemGroup>
 
@@ -18,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SalesLog.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Resource Include="SalesLog.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
