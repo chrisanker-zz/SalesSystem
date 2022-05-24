@@ -27,6 +27,8 @@ namespace SalesSystem
             AppIsRunning = true;
             automaticSales();
 
+            // Below doesn't work because async task is writing to same file and hence locking it
+
             /*streamReader = new StreamReader("SalesLog.txt");
             SalesLog salesLog = new SalesLog(streamReader, reader);
             itemNumbers = new List<string>();
