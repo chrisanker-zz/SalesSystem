@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Threading;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Threading;
 
 namespace SalesSystem
 {
@@ -15,19 +12,27 @@ namespace SalesSystem
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        Thread thread = new Thread(new ThreadStart(CreateAndConfirmOrder));
+    {        
         private static bool AppIsRunning;
+        double totalrevenue;
+        double productrevenue;
+        private StreamReader streamReader;
+        private object reader;
+        List<string> itemNumbers;
+
         public MainWindow()
         {            
             InitializeComponent();
+            
             AppIsRunning = true;
             automaticSales();
-        }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            /*streamReader = new StreamReader("SalesLog.txt");
+            SalesLog salesLog = new SalesLog(streamReader, reader);
+            itemNumbers = new List<string>();
+            itemNumbers.Add("260406084");
+            totalrevenue = salesLog.GetTotalByItem(itemNumbers);
+            this.DataContext =  salesLog;*/
         }
 
         private void dgSalesOverview_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,12 +62,19 @@ namespace SalesSystem
         
         private static async Task automaticSales()
         {
-            do
+            try
             {
-                await Task.Run(() => CreateAndConfirmOrder());
-                await Task.Delay(15000);
+                do
+                {
+                    await Task.Run(() => CreateAndConfirmOrder());
+                    await Task.Delay(15000);
+                }
+                while (AppIsRunning);
             }
-            while(AppIsRunning);
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btClose_Click(object sender, RoutedEventArgs e)
@@ -70,5 +82,6 @@ namespace SalesSystem
             AppIsRunning = false;
             Close();
         }
+        
     }
 }

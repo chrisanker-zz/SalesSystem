@@ -16,6 +16,7 @@ namespace SalesSystem
         {
             products = list;
         }
+        
         public double GetOrderTotal()
         {
             return ordertotal;
