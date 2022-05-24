@@ -34,6 +34,6 @@ namespace SalesSystem
                 }                
             }
             return total;
-        }
+        }        
     }
 }

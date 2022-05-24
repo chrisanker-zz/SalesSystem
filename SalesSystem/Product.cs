@@ -30,8 +30,7 @@ namespace SalesSystem
             return assemblyDirectory;
         }
         public double GetCost(string itemNumber)
-        {
-            
+        {            
             double cost = 0;
             var xml = XDocument.Load(GetAssemblyDirectory() + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")
@@ -48,7 +47,7 @@ namespace SalesSystem
 
         public string GetName()
         {
-            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            var xml = XDocument.Load(GetAssemblyDirectory() + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")
                         where c.Element("itemNumber").Value == itemNumber
                         select c.Element("name").Value;
@@ -61,7 +60,7 @@ namespace SalesSystem
 
         public string GetItemNumber(string productName)
         {
-            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            var xml = XDocument.Load(GetAssemblyDirectory() + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")
                         where c.Element("name").Value == productName
                         select c.Element("itemNumber").Value;

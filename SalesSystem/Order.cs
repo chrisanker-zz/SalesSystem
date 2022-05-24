@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 
 namespace SalesSystem
@@ -34,15 +35,17 @@ namespace SalesSystem
             products.Remove(selectedProduct);            
         }
 
-        public void WriteToLog(List<Product> shoppingCart)
+        public void WriteToLog()
         {
-            string filepath = @"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\SalesLog.txt";
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            string filepath = assemblyDirectory + @"\" + "SalesLog.txt";
             using (StreamWriter writer = new StreamWriter(filepath,true))
             {                
-                for(int i = 0; i < shoppingCart.Count; i++)
+                for(int i = 0; i < products.Count; i++)
                 {
-                    writer.WriteLine(shoppingCart[i].GetItemNumber() + "; " + shoppingCart[i].GetName() + "; "
-                        + shoppingCart[i].GetCost(shoppingCart[i].GetItemNumber()));
+                    writer.WriteLine(products[i].GetItemNumber() + "; " + products[i].GetName() + "; "
+                        + products[i].GetCost(products[i].GetItemNumber()));
                 }
             }
         }        
