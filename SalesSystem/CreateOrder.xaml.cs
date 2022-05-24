@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Xml.Linq;
 
@@ -16,9 +18,15 @@ namespace SalesSystem
         public CreateOrder()
         {
             InitializeComponent();
+
             btAddToCart.IsEnabled = false;
             btRemoveFromCart.IsEnabled = false;
-            var xml = XDocument.Load(@"C:\Users\CAL109\source\repos\SalesSystem\SalesSystem\XMLFile1.xml");
+            btConfirm.IsEnabled = false;
+
+            string assemblyName = Assembly.GetExecutingAssembly().Location;
+            string assemblyDirectory = Path.GetDirectoryName(assemblyName);
+            
+            var xml = XDocument.Load(assemblyDirectory + @"\" + "XMLFile1.xml");
             var query = from c in xml.Root.Descendants("product")                        
                         select c.Element("name").Value;
             foreach (string product in query)
@@ -40,6 +48,10 @@ namespace SalesSystem
                 if (productCatalogueListBox.Count == 0)
                 {
                     btAddToCart.IsEnabled = false;
+                }
+                if (ShoppingCartListBox.Count > 0)
+                {
+                    btConfirm.IsEnabled = true;
                 }
             }
             catch (Exception ex)
@@ -69,7 +81,7 @@ namespace SalesSystem
                 ReassignProdCatToItemsSource();
                 ShoppingCartListBox.RemoveAt(lbShoppingCart.SelectedIndex);
                 ReassignShoppingCartToItemsSource();
-                if (ShoppingCartListBox.Count == 0) { btRemoveFromCart.IsEnabled = false; }
+                if (ShoppingCartListBox.Count == 0) { btRemoveFromCart.IsEnabled = false; btConfirm.IsEnabled = false; }
             }
             catch(Exception ex)
             {
@@ -115,11 +127,9 @@ namespace SalesSystem
                             "Confirm Order",
                             MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                order.WriteToLog(productsInCart);
+                order.WriteToLog();
                 Close();
-            }
-            
-            
+            }            
         }
     }
 }
