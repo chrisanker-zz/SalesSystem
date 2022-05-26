@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="248" Width="792">
+        Title="MainWindow" Height="400" Width="792"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <Grid>
         <Grid.Resources>
             <XmlDataProvider x:Key="ProductData" Source="XMLFile1.xml" XPath="/productListing/productType/product"/>            
@@ -17,8 +18,13 @@
             <RowDefinition Height="4*"/>            
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="5">
-            <DatePicker Width="100" HorizontalAlignment="Right"></DatePicker>
+        <StackPanel Grid.Row="0" Margin="5" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Label Content="From Time" MaxHeight="30" HorizontalAlignment="Right"></Label>
+            <TextBox x:Name="tbFromTime"  Width="75" MaxHeight="20" TextChanged="tbFromTime_TextChanged">hh.mm.ss</TextBox>
+            <Label Content="To Time" MaxHeight="30" Margin="10,0,0,0"></Label>
+            <TextBox x:Name="tbToTime" Width="75" Margin="5,0,10,0" MaxHeight="20" HorizontalAlignment="Right" TextChanged="tbToTime_TextChanged">hh.mm.ss</TextBox>
+            <DatePicker SelectedDate="{x:Static sys:DateTime.Now}" Width="100" MaxHeight="25" HorizontalAlignment="Right" IsEnabled="False"></DatePicker>
+            <Button Content="Search" Width="55" Height="25" Margin="20,0,10,0"></Button>
         </StackPanel>        
         <DataGrid Grid.Row="1" x:Name="dgSalesOverview" DataContext="{StaticResource ProductData}" ItemsSource="{Binding XPath=/productListing/productType/product}" SelectionChanged="dgSalesOverview_SelectionChanged" Margin="10" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>

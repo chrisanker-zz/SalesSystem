@@ -46,10 +46,9 @@ namespace SalesSystem
             using (StreamWriter writer = new StreamWriter(file, true))
             {
                 for (int i = 0; i < products.Count; i++)
-                {
-                    string currentdate = DateTime.Now.ToString();
+                {                    
                     writer.WriteLine(products[i].GetItemNumber() + "; " + products[i].GetName() + "; "
-                        + products[i].GetCost(products[i].GetItemNumber()) + "; " + currentdate);
+                        + products[i].GetCost(products[i].GetItemNumber()) + "; " + splitDateTime(DateTime.Now));
                 }
             }
         }

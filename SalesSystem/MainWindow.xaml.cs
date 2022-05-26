@@ -84,6 +84,16 @@ namespace SalesSystem
             AppIsRunning = false;
             Close();
         }
-        
+
+        private void tbToTime_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+
+        private void tbFromTime_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }
