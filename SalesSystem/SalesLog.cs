@@ -55,9 +55,10 @@ namespace SalesSystem
         }
 
         public string splitDateTime(DateTime dateTime)
-        {
-            string dt = dateTime.ToString();
-            string[] dateTimeComps = dt.Split(" ");            
+        {            
+            string[] dateTimeComps = dateTime.ToString().Split(" ");
+            string date = dateTimeComps[0];
+            string time = dateTimeComps[1];
             return dateTimeComps[0] + "; " + dateTimeComps[1];
         }
     }
