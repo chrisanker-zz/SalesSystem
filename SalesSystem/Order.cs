@@ -35,18 +35,5 @@ namespace SalesSystem
         {
             products.Remove(selectedProduct);            
         }
-
-        public void WriteToLog()
-        {            
-            string file = "SalesLog.txt";                     
-            using (StreamWriter writer = new StreamWriter(file,true))
-            {                
-                for(int i = 0; i < products.Count; i++)
-                {
-                    writer.WriteLine(products[i].GetItemNumber() + "; " + products[i].GetName() + "; "
-                        + products[i].GetCost(products[i].GetItemNumber()));
-                }
-            }
-        }        
     }
 }

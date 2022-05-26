@@ -57,8 +57,8 @@ namespace SalesSystem
         {
             List<Product> products = new List<Product>();
             products.Add(new Product("260406084"));
-            Order order = new Order(products);
-            order.WriteToLog();
+            SalesLog salesLog = new SalesLog();            
+            salesLog.WriteToLog(products);
         }    
 
         

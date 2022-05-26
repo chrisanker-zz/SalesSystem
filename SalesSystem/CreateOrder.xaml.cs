@@ -123,11 +123,12 @@ namespace SalesSystem
 
         private void ConfirmOrderMessageBox()
         {
+            SalesLog salesLog = new SalesLog();
             if(MessageBox.Show("Order total: " + order.GetOrderTotal() + "\nDo you wish to confirm the order?",
                             "Confirm Order",
                             MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                order.WriteToLog();
+                salesLog.WriteToLog(productsInCart);
                 Close();
             }            
         }

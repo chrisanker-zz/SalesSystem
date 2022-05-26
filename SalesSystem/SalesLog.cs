@@ -12,6 +12,11 @@ namespace SalesSystem
         private StreamReader streamReader;
         private object reader;
         private double total = 0;
+
+        public SalesLog()
+        {
+        }
+
         public SalesLog(StreamReader sr, object reader)
         {
             streamReader = sr;
@@ -34,6 +39,19 @@ namespace SalesSystem
                 }                
             }
             return total;
-        }        
+        }
+        public void WriteToLog(List<Product> products)
+        {
+            string file = "SalesLog.txt";
+            using (StreamWriter writer = new StreamWriter(file, true))
+            {
+                for (int i = 0; i < products.Count; i++)
+                {
+                    string currentdate = DateTime.Now.ToString();
+                    writer.WriteLine(products[i].GetItemNumber() + "; " + products[i].GetName() + "; "
+                        + products[i].GetCost(products[i].GetItemNumber()) + "; " + currentdate);
+                }
+            }
+        }
     }
 }
