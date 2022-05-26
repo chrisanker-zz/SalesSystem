@@ -86,6 +86,6 @@ namespace TestProject1
         {
             Product p1 = new Product();
             Assert.AreEqual("34961", p1.GetItemNumber("Iso stik, Pioneer QDP3012"));
-        }        
+        }       
     }
 }

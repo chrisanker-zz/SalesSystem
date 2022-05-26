@@ -53,5 +53,12 @@ namespace SalesSystem
                 }
             }
         }
+
+        public string splitDateTime(DateTime dateTime)
+        {
+            string dt = dateTime.ToString();
+            string[] dateTimeComps = dt.Split(" ");            
+            return dateTimeComps[0] + "; " + dateTimeComps[1];
+        }
     }
 }
